@@ -274,6 +274,7 @@ function lint(code, results, config, data, file) {
             file: file,
             error: {
               id: '(error)',
+              scope: '(main)',
               raw: e.description,
               evidence: e.description,
               line: e.lineNumber,
