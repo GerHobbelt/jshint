@@ -270,7 +270,7 @@ function lint(code, results, config, data, file) {
     try {
           code = transform(code);
         } catch (e) {
-        return [{
+        return results.push({
             file: file,
             error: {
               id: '(error)',
@@ -281,7 +281,7 @@ function lint(code, results, config, data, file) {
               character: e.column,
               reason: e.description
             }
-          }];
+          });
       }
   }
 
