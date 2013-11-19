@@ -37,6 +37,7 @@
 		"underscore": "1.4.x",
 		"cli":        "0.4.x",
 		"minimatch":  "0.x.x",
+		"react-tools": "0.x",
 		"console-browserify": "0.1.x"
 	},
 
