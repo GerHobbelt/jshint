@@ -264,13 +264,15 @@ function collect(fp, files, ignores, ext) {
 function lint(code, results, config, data, file) {
   var globals;
   var lintData;
+  var parseError = false;
   var buffer = [];
 
   if (path.extname(file) === '.jsx') {
     try {
           code = transform(code);
         } catch (e) {
-        return results.push({
+        parseError = true;
+        results.push({
             file: file,
             error: {
               id: '(error)',
@@ -309,7 +311,7 @@ function lint(code, results, config, data, file) {
 
   if (!JSHINT(buffer, config, globals)) {
     JSHINT.errors.forEach(function (err) {
-      if (err) {
+      if (!parseError) {
         results.push({ file: file || "stdin", error: err });
       }
     });
